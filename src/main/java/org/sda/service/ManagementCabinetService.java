@@ -4,20 +4,26 @@ import org.sda.entities.*;
 import org.sda.repository.FisaPacientRepository;
 import org.sda.repository.InregistrareAbonamentRepository;
 import org.sda.repository.PacientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class ManagementCabinetService {
-    InregistrareAbonamentRepository inregistrareAbonamentRepository = new InregistrareAbonamentRepository();
-    PacientRepository pacientRepository = new PacientRepository();
-    FisaPacientRepository fisaPacient = new FisaPacientRepository();
+    @Autowired
+    InregistrareAbonamentRepository inregistrareAbonamentRepository;
+    @Autowired
+    PacientRepository pacientRepository;
+    @Autowired
+    FisaPacientRepository fisaPacientRepository;
 
 
     //    metoda de inregistrare abonament (Client,Tip abonament)
     public void saveRegistruAbonamente(Pacient pacient, Abonament abonament) {
-        if (pacientRepository.getById(pacient.getId()) == null) {
+        if (pacientRepository.findById(pacient.getId()) == null) {
             throw new RuntimeException(("Pacientul nu este inregistrat!"));
         }
 
