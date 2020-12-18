@@ -17,7 +17,7 @@
 <body>
 
     <div class="row">
-        <form class="col s12" th:action="@{/user-create}" th:object="${user}" method="post">
+        <form class="col s12" th:action="@{create}" th:object="${user}" method="post">
             <div class="container">
                 <h1>Adaugati user</h1>
                 <p>Comletati campurile pentru a inregistra un nou utilizator.</p>
@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="first_name"><b>Nume</b></label>
-                        <input th:field="*{nume}" id="first_name" type="text" placeholder="First Name" required>
+                        <input th:field="*{firstName}" id="first_name" type="text" placeholder="First Name" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="last_name"><b>Prenume</b></label>
-                        <input th:field="*{prenume}" id="last_name" type="text" placeholder="Last Name" required>
+                        <input th:field="*{lastName}" id="last_name" type="text" placeholder="Last Name" required>
                     </div>
                 </div>
                 <div class="row">
@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="telephone_number"><b>Telefon</b></label>
-                        <input th:field="*{telefon}" id="telephone_number" type="text" placeholder="telefon" required>
+                        <input th:field="*{telephone}" id="telephone_number" type="text" placeholder="Telephone" required>
                     </div>
                 </div>
                 <div class="row">

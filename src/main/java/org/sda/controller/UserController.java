@@ -5,10 +5,7 @@ import org.sda.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,10 +18,14 @@ public class UserController {
     @GetMapping("/all")
     public String getUsers(Model model) {
         List<User> allUsers = userService.findAll();
-
         model.addAttribute("users", allUsers);
         return "user/user-all";
 
+    }
+    @GetMapping("/create")
+    public String createUser(Model model) {
+        model.addAttribute("user",new User());
+        return "user/user-create";
     }
 
     @PostMapping("/create")
@@ -35,13 +36,17 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "redirect:all";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+
+            userService.deleteById(id);
+
         return "redirect:/user/all";
     }
 
-    @RequestMapping("/create")
-    public String goToCreate(Model model) {
-        model.addAttribute(new User());
-        return "user-create";
-    }
+
 
 }

@@ -12,46 +12,41 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8">
-    <title>Pacient view</title>
+    <title>KinetoPowerMed Users</title>
 </head>
 
 
 <body>
 <div class="container">
     <h1>Users</h1>
-    <a th:href="@{user/user-create}">
+    <a th:href="@{create}">
         <i class="small material-icons">add</i>
     </a>
     <table>
         <thead>
         <tr>
-            <td>
-                User id
-            </td>
-            <td>
-                Name
-            </td>
-            <td>
-                Surname
-            </td>
-            <td>
-                Role
-            </td>
+            <td>Id</td>
+            <td>Username</td>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Role</td>
 
-            <td>Actiune</td>
+            <td>Action</td>
         </tr>
         </thead>
         <tbody th:each="u : ${users}">
 
         <tr>
-            <td th:text="${u.cnp}"></td>
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.username}"></td>
             <td th:text="${u.firstName}"></td>
             <td th:text="${u.lastName}"></td>
+            <td th:text="${u.roles}"></td>
             <td>
-                <a th:href="@{/user-create/{id}(id = ${u.id})}">
-                    <i class="small material-icons">create</i>
+                <a th:href="@{/user-edit/{id}(id = ${u.id})}">
+                    <i class="small material-icons">update</i>
                 </a>
-                <a th:href="@{/deleteprofessor/{id}(id = ${u.id})}">
+                <a th:href="@{delete/{id}(id = ${u.id})}">
                     <i class="small material-icons">delete</i>
                 </a>
             </td>

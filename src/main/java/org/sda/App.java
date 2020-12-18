@@ -23,6 +23,10 @@ public class App implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+//        try{
+//            userRepository.deleteById(1);
+//        }catch(Exception ex){
+//
+//        }
     }
 }
