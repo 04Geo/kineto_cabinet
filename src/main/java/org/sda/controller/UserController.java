@@ -1,6 +1,9 @@
 package org.sda.controller;
 
+import org.sda.entities.Role;
 import org.sda.entities.User;
+import org.sda.repository.RoleRepository;
+import org.sda.service.RoleService;
 import org.sda.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +15,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/all")
     public String getUsers(Model model) {
@@ -29,9 +36,11 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String createUser(@ModelAttribute User user) {
-
-        try {
+    public String createUser(@ModelAttribute User user,@RequestParam List<String> role) {
+        try { for(String r:role){
+            Role dbRole = roleService.findByRoleType(r);
+            user.getRoles().add(dbRole);
+        }
             userService.save(user);
         } catch (Exception e) {
             e.printStackTrace();

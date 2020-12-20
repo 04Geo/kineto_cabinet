@@ -11,11 +11,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String roleType;
-    @ManyToMany
-    @JoinTable(
-            name = "usersroles",
-            joinColumns = @JoinColumn(name = "roleId"),
-            inverseJoinColumns = @JoinColumn(name = "userId"))
+    @ManyToMany(mappedBy = "roles")
 
     private List<User> users = new ArrayList<>();
 

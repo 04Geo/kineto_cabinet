@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public UserService(@Autowired UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,13 +22,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
-//    public User findById(Integer id) {
-//        Optional user = userRepository.findById(id);
-//        if (!user.isPresent()) {
-//            throw new NoSuchElementException("Userul cu " + id + " nu a fost gasit!");
-//        }
-//        return (User) user.get();
-//    }
+    public User findById(Integer id) {
+        Optional user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            throw new NoSuchElementException("Userul cu " + id + " nu a fost gasit!");
+        }
+        return (User) user.get();
+    }
 
 
     public User save (User user) throws Exception {

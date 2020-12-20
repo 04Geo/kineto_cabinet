@@ -22,8 +22,14 @@ public class User {
     private List<Schedule> patientSchedules = new ArrayList<>();
     @OneToMany(mappedBy = "personnel")
     private List<Schedule> personnelSchedules = new ArrayList<>();
-    @ManyToMany(mappedBy = "users")
+
+    @ManyToMany
+    @JoinTable(
+            name = "usersroles",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
     private List<Role> roles = new ArrayList<>();
+
     @OneToMany(mappedBy = "user")
     private List<Subscription> subscriptions = new ArrayList<>();
 

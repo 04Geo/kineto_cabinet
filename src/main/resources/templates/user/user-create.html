@@ -10,6 +10,11 @@
             src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--Let browser know website is optimized for mobile-->
+    <script>
+        $(document).ready(function(){
+        $('select').formSelect();});
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8">
     <title>Register</title>
@@ -20,7 +25,7 @@
         <form class="col s12" th:action="@{create}" th:object="${user}" method="post">
             <div class="container">
                 <h1>Inregistrare utilizator</h1>
-                <p>Comletati campurile pentru a inregistra un nou utilizator.</p>
+                <p>Comletati campurile de mai jos pentru a inregistra un nou utilizator.</p>
                 <hr>
                 <div class="row">
                     <div class="input-field col s12">
@@ -52,6 +57,18 @@
                         <input th:field="*{email}" id="email" type="text" placeholder="email" required>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                <select multiple name ="role">
+                    <option value="ROLE_ADMIN">Admin</option>
+                    <option value="ROLE_PLANNER">Planner</option>
+                    <option value="ROLE_THERAPIST">Therapist</option>
+                    <option value="ROLE_PATIENT">Patient</option>
+                </select>
+                    </div>
+                </div>
+
 
                 <button type="submit">Add</button>
             </div>
