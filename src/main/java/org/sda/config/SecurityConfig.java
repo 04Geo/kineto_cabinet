@@ -30,16 +30,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/user/all").hasAuthority("ADMIN")
-//                .antMatchers("/projects/create").hasAuthority("ADMIN")
+//                .antMatchers("/user/all").hasAuthority("ADMIN")
+//                .antMatchers("/user/create").hasAuthority("ADMIN")
                 .antMatchers("/user/create").permitAll()
-//                .antMatchers("/registration/save").permitAll()
+                .antMatchers("/user/all").permitAll()
+                .antMatchers("/").permitAll()
 //                .antMatchers("/js/**", "/css/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .loginPage("/login").permitAll()
                 .and()
-                .logout();
+                .logout().logoutSuccessUrl("/"); // calea din controler catre pagina de home
     }
 
 }
