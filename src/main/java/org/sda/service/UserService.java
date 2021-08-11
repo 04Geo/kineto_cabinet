@@ -32,11 +32,12 @@ public class UserService {
 
 
     public User save (User user) throws Exception {
-//        if (employee.getAddress() != null && employee.getAddress().size() > 0){
+        if (user.getEmail() != null){
         return userRepository.save(user);
-//        }
-//        throw new  Exception("Cannot create an Employee without an Address");
+        }
+        throw new  Exception("User already registered");
     }
+
 
     public User update(User user) {
 
@@ -49,5 +50,6 @@ public class UserService {
         userRepository.deleteById(id);
 
     }
+
 
 }

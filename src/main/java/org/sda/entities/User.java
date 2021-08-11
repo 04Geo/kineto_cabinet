@@ -36,7 +36,9 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String password, String username, String cnp, String firsName, String lastName, String telephone, String email, String address) {
+    public User(Integer id, String password, String username, String cnp,
+                String firsName, String lastName, String telephone,
+                String email, String address) {
         this.id = id;
         this.password = password;
         this.username = username;

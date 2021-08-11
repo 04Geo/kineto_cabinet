@@ -18,7 +18,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     @Autowired
     private RoleService roleService;
 
@@ -27,7 +26,6 @@ public class UserController {
         List<User> allUsers = userService.findAll();
         model.addAttribute("users", allUsers);
         return "user/user-all";
-
     }
     @GetMapping("/create")
     public String createUser(Model model) {
